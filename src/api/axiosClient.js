@@ -5,7 +5,7 @@ const BASE_URL = "http://localhost:4000/api/v1";
 
 //ローカルストレージからトークンを取得
 const getToken = () => {
-  localStorage.getItem("token");
+  return localStorage.getItem("token");
 };
 
 /* カスタムでaxiosのインスタンスを作成(https://axios-http.com/docs/instance) */
@@ -18,7 +18,8 @@ const axiosClient = axios.create({
 //リクエスト↓
 axiosClient.interceptors.request.use(async (config) => {
   return {
-    config,
+    //configにheadersを挿入(レッスン50にて)
+    ...config,
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${getToken()}`, //リクエストヘッダにJWTをつけてサーバーに渡す
