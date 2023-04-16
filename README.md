@@ -7,3 +7,4 @@
 39. react-router-domをインストール・ルーティング設定
 40. Material UIをインストール
 41. CSSデフォルトのを初期化・ThemeProviderを利用してアプリ全体のテーマを決定(https://mui.com/material-ui/customization/theming/)
+42. 認証に関する共通ページの構築をはじめよう
