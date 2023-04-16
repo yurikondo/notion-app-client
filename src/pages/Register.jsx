@@ -5,9 +5,25 @@ import { LoadingButton } from "@mui/lab";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  //フォームから入力されたデータを取得するための処理
+  const handleSubmit = async (e) => {
+    //デフォルトのフォーム送信動作をキャンセル
+    e.preventDefault();
+    //フォームの文字列を取得(FormDataクラスを使用)
+    const data = new FormData(e.target);
+
+    //textFieldのname属性で指定
+    const username = data.get("username").trim();
+    const password = data.get("password").trim();
+    const confirmPassword = data.get("confirmPassword").trim();
+    console.log(username);
+    console.log(password);
+    console.log(confirmPassword);
+  };
+
   return (
     <>
-      <Box conponent="form">
+      <Box component="form" onSubmit={handleSubmit}>
         <TextField
           fullWidth
           id="username"
@@ -44,8 +60,8 @@ const Register = () => {
         >
           アカウント作成
         </LoadingButton>
-        {/* react-router-domのLink */}
       </Box>
+      {/* react-router-domのLink */}
       <Button component={Link} to="/login">
         すでにアカウントを持っていますか？ログイン
       </Button>
