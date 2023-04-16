@@ -8,4 +8,5 @@
 40. Material UIをインストール
 41. CSSデフォルトのを初期化・ThemeProviderを利用してアプリ全体のテーマを決定(https://mui.com/material-ui/customization/theming/)
 42. 認証に関する共通ページの構築
-43. ユーザー新規登録用のページを作成しよう
+43. ユーザー新規登録用のページのフォームを作成
+44. 送信用ボタンとログイン遷移用のボタンを作成
