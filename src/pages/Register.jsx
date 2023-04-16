@@ -75,7 +75,10 @@ const Register = () => {
           margin="normal"
           name="username"
           required
+          //エラーテキスト
           helperText={usernameErrText}
+          //エラー文が入っていたら赤く表示させる
+          error={usernameErrText !== ""}
         />
         <TextField
           fullWidth
@@ -86,6 +89,7 @@ const Register = () => {
           type="password"
           required
           helperText={passwordErrText}
+          error={passwordErrText !== ""}
         />
         <TextField
           fullWidth
@@ -96,6 +100,7 @@ const Register = () => {
           type="password"
           required
           helperText={confirmPasswordErrText}
+          error={confirmPasswordErrText !== ""}
         />
         <LoadingButton
           sx={{ mt: 3, mb: 2 }}
