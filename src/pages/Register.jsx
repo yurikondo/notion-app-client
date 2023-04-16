@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { LoadingButton } from "@mui/lab";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authApi from "../api/authApi";
 
 const Register = () => {
@@ -10,6 +10,7 @@ const Register = () => {
   const [passwordErrText, setPasswordErrText] = useState("");
   const [confirmPasswordErrText, setConfirmPasswordErrText] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   //フォームから入力されたデータを取得するための処理
   const handleSubmit = async (e) => {
@@ -61,6 +62,7 @@ const Register = () => {
       //ローカルストレージにトークンを保存
       localStorage.setItem("token", res.token);
       console.log("ユーザー新規登録に成功しました🎉");
+      navigate("/");
     } catch (err) {
       //mongoDBにエラーで保存できなかったら(レッスン55)
       const errors = err.data.errors;
@@ -126,7 +128,7 @@ const Register = () => {
           fullWidth
           type="submit"
           //mongodbに処理中はボタンを押せないようにする
-          loading={false}
+          loading={loading}
           color="primary"
           variant="outlined"
         >
