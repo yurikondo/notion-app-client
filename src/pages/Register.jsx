@@ -9,6 +9,7 @@ const Register = () => {
   const [usernameErrText, setUsernameErrText] = useState("");
   const [passwordErrText, setPasswordErrText] = useState("");
   const [confirmPasswordErrText, setConfirmPasswordErrText] = useState("");
+  const [loading, setLoading] = useState(false);
 
   //フォームから入力されたデータを取得するための処理
   const handleSubmit = async (e) => {
@@ -47,6 +48,8 @@ const Register = () => {
 
     if (error) return;
 
+    setLoading(true);
+
     //ユーザー新規登録API
     try {
       const res = await authApi.register({
@@ -54,6 +57,7 @@ const Register = () => {
         password,
         confirmPassword,
       });
+      setLoading(false);
       //ローカルストレージにトークンを保存
       localStorage.setItem("token", res.token);
       console.log("ユーザー新規登録に成功しました🎉");
@@ -72,6 +76,7 @@ const Register = () => {
           setConfirmPasswordErrText(err.msg);
         }
       });
+      setLoading(false);
     }
   };
 
@@ -89,6 +94,8 @@ const Register = () => {
           helperText={usernameErrText}
           //エラー文が入っていたら赤く表示させる
           error={usernameErrText !== ""}
+          //mongodbに処理中はフォームに入力できないようにする
+          disabled={loading}
         />
         <TextField
           fullWidth
@@ -100,6 +107,7 @@ const Register = () => {
           required
           helperText={passwordErrText}
           error={passwordErrText !== ""}
+          disabled={loading}
         />
         <TextField
           fullWidth
@@ -111,11 +119,13 @@ const Register = () => {
           required
           helperText={confirmPasswordErrText}
           error={confirmPasswordErrText !== ""}
+          disabled={loading}
         />
         <LoadingButton
           sx={{ mt: 3, mb: 2 }}
           fullWidth
           type="submit"
+          //mongodbに処理中はボタンを押せないようにする
           loading={false}
           color="primary"
           variant="outlined"
