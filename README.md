@@ -13,3 +13,4 @@
 45. Axiosインスタンスを導入してAPIを叩く下準備(axiosはAPIを叩くためのライブラリ)
 46. Axios interceptorsを利用してリクエストの前処理を設定
 47. Axios interceptorsを利用してレスポンスの前処理を設定
+48. 認証用APIファイルを用意
