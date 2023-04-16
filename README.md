@@ -12,3 +12,4 @@
 44. 送信用ボタンとログイン遷移用のボタンを作成
 45. Axiosインスタンスを導入してAPIを叩く下準備(axiosはAPIを叩くためのライブラリ)
 46. Axios interceptorsを利用してリクエストの前処理を設定
+47. Axios interceptorsを利用してレスポンスの前処理を設定

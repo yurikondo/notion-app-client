@@ -15,6 +15,7 @@ const axiosClient = axios.create({
 });
 
 /* APIを叩く前（リクエストを送る前）に前処理を捕まえる(https://axios-http.com/docs/interceptors) */
+//リクエスト↓
 axiosClient.interceptors.request.use(async (config) => {
   return {
     config,
@@ -24,3 +25,18 @@ axiosClient.interceptors.request.use(async (config) => {
     },
   };
 });
+
+//レスポンス↓
+axiosClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (err) => {
+    throw err.response;
+  }
+);
+
+export default axiosClient;
+
+/* axios.interceptorsを使用して、リクエストとレスポンスの前処理を行います。リクエストの場合、axiosClient.interceptors.request.use()を使用して、リクエストを送信する前にJWTトークンをリクエストヘッダーに追加するように設定されます。レスポンスの場合、axiosClient.interceptors.response.use()を使用して、正常なレスポンスが返される場合はそのまま返し、エラーが発生した場合はエラーを投げるように設定されます。
+ */
