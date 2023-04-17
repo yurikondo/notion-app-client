@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
-import { Container } from "@mui/system";
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
+import { Container } from "@mui/system";
 import notionLogo from "../../assets/images/notion-logo.png";
 import authUtils from "../../utils/authUtils";
 
@@ -9,6 +9,7 @@ const AuthLayout = () => {
   const navigate = useNavigate();
 
   //ページ遷移するたびに起動
+  //ローカルストレージにトークンが入っているか（ログインしているか）チェック
   useEffect(() => {
     const checkAuth = async () => {
       //認証チェック
@@ -22,8 +23,8 @@ const AuthLayout = () => {
 
   return (
     <div>
-      {/* "component"プロパティに設定された値は、Material UIのコンポーネントのHTML要素を指定するために使用されます。 */}
-      <Container conponent="main" max-wide="xs">
+      {/* "component"プロパティに設定された値は、Material UIのコンポーネントのHTML要素を指定する */}
+      <Container component="main" max-wide="xs">
         {/* div要素のようなブロック要素を表現するための汎用的なコンテナー */}
         <Box
           sx={{
@@ -41,6 +42,7 @@ const AuthLayout = () => {
           />
           Notionクローン
         </Box>
+        {/* LoginとRegisterコンポーネントを表示 */}
         <Outlet />
       </Container>
     </div>

@@ -1,6 +1,5 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AuthLayout from "./componets/layout/AuthLayout";
+import AuthLayout from "./components/layout/AuthLayout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -12,8 +11,10 @@ function App() {
     palette: { primary: blue },
   });
 
+  // テーマ(https://mui.com/material-ui/customization/theming/)
   return (
     <ThemeProvider theme={theme}>
+      {/* デフォルトのCSSをリセット */}
       <CssBaseline>
         <BrowserRouter>
           <Routes>
