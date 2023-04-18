@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Drawer,
   IconButton,
@@ -6,8 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
 import LogoutOutlined from "@mui/icons-material/LogoutOutlined";
+import AddBoxOutlined from "@mui/icons-material/AddBoxOutlined";
 
 const Sidebar = () => {
   return (
@@ -34,6 +35,39 @@ const Sidebar = () => {
             </Typography>
             <IconButton>
               <LogoutOutlined />
+            </IconButton>
+          </Box>
+        </ListItemButton>
+        <Box sx={{ paddingTop: "10px" }}></Box>
+        <ListItemButton>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography variant="body2" fontWeight="700">
+              お気に入り
+            </Typography>
+          </Box>
+        </ListItemButton>
+        <Box sx={{ paddingTop: "10px" }}></Box>
+        <ListItemButton>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography variant="body2" fontWeight="700">
+              プライベート
+            </Typography>
+            <IconButton>
+              <AddBoxOutlined fontSize="small" />
             </IconButton>
           </Box>
         </ListItemButton>
