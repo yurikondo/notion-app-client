@@ -9,8 +9,17 @@ import {
 import { Box } from "@mui/system";
 import LogoutOutlined from "@mui/icons-material/LogoutOutlined";
 import AddBoxOutlined from "@mui/icons-material/AddBoxOutlined";
+import assets from "../../assets/index";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
     /* https://mui.com/material-ui/react-drawer/ */
     /* open={true}は常に表示 */
@@ -20,7 +29,13 @@ const Sidebar = () => {
       open={true}
       sx={{ width: 250, height: "100vh" }}
     >
-      <List sx={{ width: 250, height: "100vh" }}>
+      <List
+        sx={{
+          width: 250,
+          height: "100vh",
+          backgroundColor: assets.colors.secondary,
+        }}
+      >
         <ListItemButton>
           <Box
             sx={{
@@ -33,7 +48,7 @@ const Sidebar = () => {
             <Typography variant="body2" fontWeight="700">
               ゆり🎉
             </Typography>
-            <IconButton>
+            <IconButton onClick={logout}>
               <LogoutOutlined />
             </IconButton>
           </Box>
@@ -72,7 +87,6 @@ const Sidebar = () => {
           </Box>
         </ListItemButton>
       </List>
-      kkkk
     </Drawer>
   );
 };
