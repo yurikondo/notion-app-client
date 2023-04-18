@@ -5,9 +5,12 @@ import { Container } from "@mui/system";
 import notionLogo from "../../assets/images/notion-logo.png";
 import authUtils from "../../utils/authUtils";
 import Sidebar from "../common/Sidebar";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/features/userSlice";
 
 const AppLayout = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //ページ遷移するたびに起動
   //ローカルストレージにトークンが入っているか（ログインしているか）チェック
@@ -17,6 +20,9 @@ const AppLayout = () => {
       const user = await authUtils.isAuthenticated();
       if (!user) {
         navigate("/login");
+      } else {
+        //ログインしていたら、userを保存する（グローバルに使えるようになる）
+        dispatch(setUser(user));
       }
     };
     checkAuth();
