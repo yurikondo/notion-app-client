@@ -11,7 +11,6 @@ function Home() {
     try {
       setLoading(true);
       const res = await memoApi.create();
-      console.log(res);
       navigate(`/memo/${res._id}`);
     } catch (err) {
       alert(err);
