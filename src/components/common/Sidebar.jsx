@@ -89,12 +89,20 @@ const Sidebar = () => {
           </Box>
         </ListItemButton>
         <ListItemButton>
-          <Typography sx={{ pl: "20px" }} component={Link} to="memo/dfgsdgsg">
+          <Typography
+            sx={{ pl: "20px", textDecoration: "none" }}
+            component={Link}
+            to="memo/dfgsdgsg"
+          >
             📝仮のメモ
           </Typography>
         </ListItemButton>
         <ListItemButton>
-          <Typography sx={{ pl: "20px" }} component={Link} to="memo/dfgsdgsg">
+          <Typography
+            sx={{ pl: "20px", textDecoration: "none" }}
+            component={Link}
+            to="memo/dfgsdgsg"
+          >
             📝仮のメモ
           </Typography>
         </ListItemButton>{" "}
