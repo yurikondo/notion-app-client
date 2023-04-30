@@ -37,7 +37,7 @@ const Sidebar = () => {
       }
     };
     getMemos();
-  }, []);
+  }, [dispatch]);
 
   return (
     /* https://mui.com/material-ui/react-drawer/ */
@@ -105,29 +105,16 @@ const Sidebar = () => {
             </IconButton>
           </Box>
         </ListItemButton>
-        <ListItemButton>
-          <Typography
-            sx={{ pl: "20px", textDecoration: "none" }}
-            component={Link}
-            to="memo/dfgsdgsg"
-          >
-            📝仮のメモ
-          </Typography>
-        </ListItemButton>
-        <ListItemButton>
-          <Typography
-            sx={{ pl: "20px", textDecoration: "none" }}
-            component={Link}
-            to="memo/dfgsdgsg"
-          >
-            📝仮のメモ
-          </Typography>
-        </ListItemButton>{" "}
-        <ListItemButton>
-          <Typography sx={{ pl: "20px" }} component={Link} to="memo/dfgsdgsg">
-            📝仮のメモ
-          </Typography>
-        </ListItemButton>
+        {memos.map((item, index) => (
+          <ListItemButton key={item._id}>
+            <Typography
+              sx={{ pl: "20px", textDecoration: "none" }}
+              component={Link}
+              to={`memo/${item._id}`}            >
+              {item.icon} {item.title}
+            </Typography>
+          </ListItemButton>
+        ))}
       </List>
     </Drawer>
   );
