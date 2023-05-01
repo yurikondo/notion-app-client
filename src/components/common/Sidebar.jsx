@@ -115,7 +115,7 @@ const Sidebar = () => {
         </ListItemButton>
         {memos.map((item, index) => (
           <ListItemButton
-            sx={{ pl: "20px", textDecoration: "none" }}
+            sx={{ pl: "20px"}}
             component={Link}
             to={`memo/${item._id}`}
             key={item._id}
