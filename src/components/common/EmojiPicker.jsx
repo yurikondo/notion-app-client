@@ -12,6 +12,17 @@ const EmojiPicker = (props) => {
 
   const showPicker = () => setIsShowPicker(!isShowPicker);
 
+  const selectEmoji = (e) => {
+    const emojiCode = e.unified.split("-");
+    let codesArray = [];
+    //elmentのel
+    emojiCode.forEach((el) => codesArray.push("0x" + el));
+    // コードから絵文字に変換
+    const emoji = String.fromCodePoint(...codesArray);
+    console.log(emoji);
+    setIsShowPicker(false);
+  };
+
   return (
     <Box>
       <Typography
@@ -23,9 +34,14 @@ const EmojiPicker = (props) => {
         {props.icon}
       </Typography>
       <Box
-        sx={{ display: isShowPicker ? "block" : "none", position: "absolute", zIndex: "100" }}
+        sx={{
+          display: isShowPicker ? "block" : "none",
+          position: "absolute",
+          zIndex: "100",
+        }}
       >
-        <Picker />
+        {/* onSelectは絵文字を選択した時 */}
+        <Picker onEmojiSelect={selectEmoji} />
       </Box>
     </Box>
   );
