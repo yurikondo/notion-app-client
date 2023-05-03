@@ -47,6 +47,17 @@ const Sidebar = () => {
     }
   }, [navigate]);
 
+  const addMemo = async () => {
+    try {
+      const res = await memoApi.create();
+      const newMemos = [res, ...memos];
+      dispatch(setMemo(newMemos));
+      navigate(`memo/${res._id}`);
+    } catch (err) {
+      alert(err);
+    }
+  };
+
   return (
     /* https://mui.com/material-ui/react-drawer/ */
     /* open={true}は常に表示 */
@@ -108,14 +119,14 @@ const Sidebar = () => {
             <Typography variant="body2" fontWeight="700">
               プライベート
             </Typography>
-            <IconButton>
+            <IconButton onClick={() => addMemo()}>
               <AddBoxOutlined fontSize="small" />
             </IconButton>
           </Box>
         </ListItemButton>
         {memos.map((item, index) => (
           <ListItemButton
-            sx={{ pl: "20px"}}
+            sx={{ pl: "20px" }}
             component={Link}
             to={`memo/${item._id}`}
             key={item._id}
