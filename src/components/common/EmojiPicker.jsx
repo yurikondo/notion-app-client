@@ -1,9 +1,20 @@
-import React from 'react'
+import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 const EmojiPicker = (props) => {
-  return (
-    <div>{props.icon}</div>
-  )
-}
+  const [selectedEmoji, setSelectedEmoji] = useState();
 
-export default EmojiPicker
+  useEffect(() => {
+    setSelectedEmoji(props.icon);
+  }, [props.icon]);
+
+  return (
+    <Box>
+      <Typography variant="h3" fontWeight="700" sx={{ cursor: "pointer" }}>
+        {props.icon}
+      </Typography>
+    </Box>
+  );
+};
+
+export default EmojiPicker;
