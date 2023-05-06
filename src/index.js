@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* redux-toolkitのstoreをどこでも使えるようにする */}
     {/* https://redux-toolkit.js.org/tutorials/quick-start#provide-the-redux-store-to-react */}
     <Provider store={store}>
       <App />

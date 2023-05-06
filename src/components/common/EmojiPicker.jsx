@@ -2,6 +2,8 @@ import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Picker from "@emoji-mart/react";
 
+// npm i @emoji-mart/react
+// https://www.npmjs.com/package/emoji-mart
 const EmojiPicker = (props) => {
   const [selectedEmoji, setSelectedEmoji] = useState();
   const [isShowPicker, setIsShowPicker] = useState(false);
@@ -15,12 +17,13 @@ const EmojiPicker = (props) => {
   const selectEmoji = (e) => {
     const emojiCode = e.unified.split("-");
     let codesArray = [];
-    //elmentのel
+    //elementのel
     emojiCode.forEach((el) => codesArray.push("0x" + el));
+    //fromCodePointはJavaScriptの組み込み関数
     // コードから絵文字に変換
     const emoji = String.fromCodePoint(...codesArray);
-    console.log(emoji);
     setIsShowPicker(false);
+    // propsで受けとったonChange関数を呼び出す
     props.onChange(emoji);
   };
 

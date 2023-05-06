@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import { Container } from "@mui/system";
-import notionLogo from "../../assets/images/notion-logo.png";
 import authUtils from "../../utils/authUtils";
 import Sidebar from "../common/Sidebar";
 import { useDispatch } from "react-redux";
@@ -21,7 +19,7 @@ const AppLayout = () => {
       if (!user) {
         navigate("/login");
       } else {
-        //ログインしていたら、userを保存する（グローバルに使えるようになる）
+        //ログインしていたら、userを保存する（グローバルに使えるようになる）レッスン73
         dispatch(setUser(user));
       }
     };
@@ -32,6 +30,9 @@ const AppLayout = () => {
     <div>
       <Box sx={{ display: "flex" }}>
         <Sidebar />
+        {/* flexGrow を1に設定して、Box要素が可能な限りスペースを占めるようにする。 */}
+        {/* p を1に設定して、上下左右のパディングを1に設定する。 */}
+        {/* width を max-content に設定して、Box要素の幅をその中身に合わせるようにする */}
         <Box sx={{ flexGrow: 1, p: 1, width: "max-content" }}>
           {/* Homeコンポーネントを表示 */}
           <Outlet />

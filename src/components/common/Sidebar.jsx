@@ -19,6 +19,7 @@ const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // react-router-domのuseParamsでURLのパラメーターを受け取れる
   const { memoId } = useParams();
   const user = useSelector((state) => state.user.value);
   const memos = useSelector((state) => state.memo.value);
@@ -42,6 +43,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     {
+      // findIndexはJavaScriptのArrayメソッド
+      //memosに入っている添字を一つ一つ探してくる
+      //memoIdと同じidを持ったmemoの添字だけを返す
       const activeIndex = memos.findIndex((e) => e._id === memoId);
       setActiveIndex(activeIndex);
     }
@@ -62,9 +66,9 @@ const Sidebar = () => {
     /* https://mui.com/material-ui/react-drawer/ */
     /* open={true}は常に表示 */
     <Drawer
-      container={window.document.body}
-      variant="permanent"
-      open={true}
+      container={window.document.body} //親コンテナを指定。window.document.bodyはHTMLの body 要素の直下に表示
+      variant="permanent" //表示モードを指定。permanentが指定されているため、常に表示
+      open={true} //Drawerが開かれているかどうかを指定。true が指定されているため、開かれた状態で表示
       sx={{ width: 250, height: "100vh" }}
     >
       <List
@@ -83,6 +87,7 @@ const Sidebar = () => {
               justifyContent: "space-between",
             }}
           >
+            {/* variant プロパティは、テキストの見出しの種類を指定 */}
             <Typography variant="body2" fontWeight="700">
               {user.username}
             </Typography>

@@ -52,7 +52,7 @@ const Login  = () => {
       console.log("ログインに成功しました🎉");
       navigate("/");
     } catch (err) {
-      //mongoDBにエラーで保存できなかったら(レッスン55)
+      //server/routes/auth.jsのバリデーションに引っ掛かったら(レッスン55)
       const errors = err.data.errors;
 
       errors.forEach((err) => {
@@ -79,9 +79,9 @@ const Login  = () => {
           required
           //エラーテキスト
           helperText={usernameErrText}
-          //エラー文が入っていたら赤く表示させる
+          //エラー文が入っていたら赤く表示
           error={usernameErrText !== ""}
-          //mongodbに処理中はフォームに入力できないようにする
+          //処理中はフォームに入力できないようにする
           disabled={loading}
         />
         <TextField

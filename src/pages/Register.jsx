@@ -20,7 +20,7 @@ const Register = () => {
 
     //デフォルトのフォーム送信動作（リロード）をキャンセル
     e.preventDefault();
-    //フォームの文字列を取得(FormDataクラスを使用)
+    //avaScriptのFormDataオブジェクトを使用して、フォームデータを取得する
     const data = new FormData(e.target);
 
     //textFieldのname属性で指定
@@ -64,7 +64,7 @@ const Register = () => {
       console.log("ユーザー新規登録に成功しました🎉");
       navigate("/");
     } catch (err) {
-      //mongoDBにエラーで保存できなかったら(レッスン55)
+      //server/routes/auth.jsのバリデーションに引っ掛かったら(レッスン55)
       const errors = err.data.errors;
 
       errors.forEach((err) => {

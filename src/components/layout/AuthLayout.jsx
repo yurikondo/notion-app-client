@@ -25,7 +25,12 @@ const AuthLayout = () => {
     <div>
       {/* "component"プロパティに設定された値は、Material UIのコンポーネントのHTML要素を指定する */}
       <Container component="main" max-wide="xs">
-        {/* div要素のようなブロック要素を表現するための汎用的なコンテナー */}
+        {/* Boxは <div> 要素のようなもの */}
+        {/* sx プロパティは、styled-systemライブラリで定義されているスタイルプロパティを使用して、コンポーネントにスタイルを適用するために使用 */}
+        {/* marginTop: 6：上部の余白を 6 のスペースに設定します。
+          display: "flex"：<Box> 要素をフレックスボックスとして表示します。
+          alignItems: "center"：フレックスアイテムを中央に配置します。
+          flexDirection: "column"：フレックスアイテムを縦方向に配置します。 */}
         <Box
           sx={{
             marginTop: 6,

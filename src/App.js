@@ -27,8 +27,10 @@ function App() {
               <Route path="register" element={<Register />} />
             </Route>
             <Route path="/" element={<AppLayout />}>
+              {/* indexは親と同じpathを指定する */}
               <Route index element={<Home />} />
               <Route path="memo" element={<Home />} />
+              {/* :memoId とすることで任意の文字列を設定できる */}
               <Route path="memo/:memoId" element={<Memo />}/>
             </Route>
           </Routes>

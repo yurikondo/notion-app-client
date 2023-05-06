@@ -9,6 +9,7 @@ import { setMemo } from "../redux/features/memoSlice";
 import EmojiPicker from "../components/common/EmojiPicker";
 
 const Memo = () => {
+  // react-router-domのuseParamsでURLのパラメーターを受け取れる
   const { memoId } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -35,10 +36,13 @@ const Memo = () => {
   const timeout = 500;
 
   const updateTitle = async (e) => {
+    // 0.5秒超えたらtimerが実行される
     clearTimeout(timer);
+    // 新しく入力されたTitleを取得
     const newTitle = e.target.value;
     setTitle(newTitle);
 
+    // setTimeoutはJSの関数
     timer = setTimeout(async () => {
       try {
         await memoApi.update(memoId, { title: newTitle });
@@ -49,7 +53,9 @@ const Memo = () => {
   };
 
   const updateDescription = async (e) => {
+    // 0.5秒超えたらtimerが実行される
     clearTimeout(timer);
+    // 新しく入力されたDescriptionを取得
     const newDescription = e.target.value;
     setDescription(newDescription);
 
@@ -65,7 +71,6 @@ const Memo = () => {
   const deleteMemo = async () => {
     try {
       const deletedMemo = await memoApi.delete(memoId);
-      console.log(deletedMemo);
       // 削除したメモ以外のメモを格納
       const newMemos = memos.filter((e) => e._id !== memoId);
       if (newMemos.length === 0) {
@@ -81,7 +86,10 @@ const Memo = () => {
   };
 
   const onIconChange = async (newIcon) => {
+    // memosを直接変更するのは好ましくないのでtempに一旦コピーを作って避難
     let temp = [...memos];
+    // findIndex関数はJavaScriptの組み込み関数
+    // 配列内の要素に対して指定された条件を満たす最初の要素のインデックスを返す
     const index = temp.findIndex((e) => e._id === memoId);
     temp[index] = { ...temp[index], icon: newIcon };
     setIcon(newIcon);
@@ -116,6 +124,7 @@ const Memo = () => {
             onChange={updateTitle}
             value={title}
             placeholder="無題"
+            // 文字入力欄が囲まれたアウトラインの枠線を持つ
             variant="outlined"
             fullWidth
             sx={{

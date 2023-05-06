@@ -19,9 +19,9 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(async (config) => {
   return {
     //configにheadersを挿入(レッスン50にて)
-    ...config,
+    ...config, //新しいオブジェクトを作成し、元の config オブジェクトのプロパティと値をそのままコピー
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json", //リクエストの内容がJSONであることを示す
       authorization: `Bearer ${getToken()}`, //リクエストヘッダにJWTをつけてサーバーに渡す
     },
   };
