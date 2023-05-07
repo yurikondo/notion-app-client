@@ -24,7 +24,7 @@ const AuthLayout = () => {
   return (
     <div>
       {/* "component"プロパティに設定された値は、Material UIのコンポーネントのHTML要素を指定する */}
-      <Container component="main" max-wide="xs">
+      <Container component="main" maxWidth="sm">
         {/* Boxは <div> 要素のようなもの */}
         {/* sx プロパティは、styled-systemライブラリで定義されているスタイルプロパティを使用して、コンポーネントにスタイルを適用するために使用 */}
         {/* marginTop: 6：上部の余白を 6 のスペースに設定します。
